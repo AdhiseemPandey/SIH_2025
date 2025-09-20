@@ -5,10 +5,11 @@ import HomePage from "./Components/posts.jsx";
 import Instruct from "./Components/instructions.jsx";
 import RegisterPage from "./Components/register.jsx";
 import Hero from "./Components/hero.jsx";
-
+import LoginCard from "./Components/LoginCard.jsx";
+//fghf
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <SignUpPage />
+    <LoginCard />
     {/* <HomePage /> */}
     {/* <Instruct /> */}
     {/* <RegisterPage /> */}
