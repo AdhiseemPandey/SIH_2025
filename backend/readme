@@ -1,0 +1,17 @@
+const authorizeRole = require('./middleware/authorize');
+
+// User can create posts
+app.post('/posts', authorizeRole(['user', 'admin', 'superadmin']), createPost);
+
+// Admin can mark as resolved, but not delete
+app.put('/posts/:id/resolve', authorizeRole(['admin', 'superadmin']), markResolved);
+
+// Superadmin can delete posts
+app.delete('/posts/:id', authorizeRole(['superadmin']), deletePost);
+
+// Superadmin can delete admins too
+app.delete('/users/:id', authorizeRole(['superadmin']), deleteAdmin);
+
+
+
+
