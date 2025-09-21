@@ -2,10 +2,10 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 
 // Route Imports
-const authRouter = require('./api/routes/auth.routes');
-const userRouter = require('./api/routes/user.routes');
-const postRouter = require('./api/routes/post.routes');
-const adminRouter = require('./api/routes/admin.routes');
+const authRouter = require('./src/api/routes/auth.routes');
+const userRouter = require('./src/api/routes/user.routes');
+const postRouter = require('./src/api/routes/post.routes');
+const adminRouter = require('./src/api/routes/admin.routes');
 
 const app = express();
 
