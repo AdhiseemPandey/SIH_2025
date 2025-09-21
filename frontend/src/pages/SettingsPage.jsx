@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 
-// --- (ProfileForm sub-component remains the same) ---
+// Mock user data based on your schema for the profile form
+const mockUserData = {
+    firstName: "Adhiseem",
+    lastName: "Pandey",
+    emailId: "adhiseem.atwork@gmail.com",
+    age: 20,
+    aadharNumber: "123456789012",
+    mobileNumber: "9876543210",
+    password: "", // Not pre-filled for security
+};
+
+// --- Sub-component for the Profile Form ---
 const ProfileForm = () => {
-    const [profileData, setProfileData] = useState({
-        firstName: "Adhiseem",
-        lastName: "Pandey",
-        emailId: "adhiseem.atwork@gmail.com",
-        age: 20,
-        aadharNumber: "123456789012",
-        mobileNumber: "9876543210",
-        password: "",
-    });
+    const [profileData, setProfileData] = useState(mockUserData);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -20,18 +23,59 @@ const ProfileForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (profileData.password && profileData.password.length < 8) {
+            alert("New password must be at least 8 characters long.");
+            return;
+        }
         console.log("Saving profile data:", profileData);
-        alert("Profile updated successfully!");
+        alert("Profile updated successfully! (Check console for data)");
     };
 
     return (
+        // FIX: The form fields were missing. They have been added below.
         <form onSubmit={handleSubmit} className="space-y-6">
-             {/* All profile form fields */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">First Name</label>
+                    <input type="text" id="firstName" name="firstName" value={profileData.firstName} onChange={handleChange} required minLength="2" maxLength="20" className="mt-1 w-full rounded-lg border-gray-300 p-3 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
+                </div>
+                <div>
+                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" value={profileData.lastName} onChange={handleChange} required minLength="2" maxLength="20" className="mt-1 w-full rounded-lg border-gray-300 p-3 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
+                </div>
+            </div>
+            <div>
+                <label htmlFor="emailId" className="block text-sm font-medium text-gray-700">Email Address (cannot be changed)</label>
+                <input type="email" id="emailId" name="emailId" value={profileData.emailId} readOnly className="mt-1 w-full rounded-lg border-gray-300 p-3 shadow-sm bg-gray-100 cursor-not-allowed" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                 <div>
+                    <label htmlFor="age" className="block text-sm font-medium text-gray-700">Age</label>
+                    <input type="number" id="age" name="age" value={profileData.age} onChange={handleChange} required min="15" max="120" className="mt-1 w-full rounded-lg border-gray-300 p-3 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
+                </div>
+                <div>
+                    <label htmlFor="mobileNumber" className="block text-sm font-medium text-gray-700">Mobile Number</label>
+                    <input type="tel" id="mobileNumber" name="mobileNumber" value={profileData.mobileNumber} onChange={handleChange} required className="mt-1 w-full rounded-lg border-gray-300 p-3 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
+                </div>
+            </div>
+            <div>
+                <label htmlFor="aadharNumber" className="block text-sm font-medium text-gray-700">Aadhaar Number (cannot be changed)</label>
+                <input type="text" id="aadharNumber" name="aadharNumber" value={profileData.aadharNumber} readOnly className="mt-1 w-full rounded-lg border-gray-300 p-3 shadow-sm bg-gray-100 cursor-not-allowed" />
+            </div>
+            <div>
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700">New Password (min. 8 characters)</label>
+                <input type="password" id="password" name="password" value={profileData.password} onChange={handleChange} minLength="8" placeholder="Leave blank to keep current password" className="mt-1 w-full rounded-lg border-gray-300 p-3 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
+            </div>
+            <div className="flex justify-end pt-4">
+                <button type="submit" className="px-8 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
+                    Save Changes
+                </button>
+            </div>
         </form>
     );
 };
 
-// --- (ComplaintRaiser sub-component remains the same) ---
+// --- Sub-component for listing posts and triggering the complaint modal ---
 const ComplaintRaiser = ({ onRaiseComplaintClick }) => {
     const { posts } = useOutletContext();
     return (
@@ -56,7 +100,7 @@ const ComplaintRaiser = ({ onRaiseComplaintClick }) => {
     );
 };
 
-// NEW: Sub-component to display registered complaints
+// --- Sub-component to display registered complaints ---
 const RegisteredComplaints = ({ complaints }) => {
     return (
         <div className="space-y-4">
@@ -84,15 +128,12 @@ const RegisteredComplaints = ({ complaints }) => {
     );
 };
 
-
 // --- Main SettingsPage Component ---
 const SettingsPage = () => {
   const [activeTab, setActiveTab] = useState('profile');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
   const [complaintDescription, setComplaintDescription] = useState("");
-  
-  // NEW: State to store the list of submitted complaints
   const [complaints, setComplaints] = useState([]);
 
   const handleOpenComplaintModal = (post) => {
@@ -112,17 +153,14 @@ const SettingsPage = () => {
         alert("Please provide a description for your complaint.");
         return;
     }
-    
-    // NEW: Create a new complaint object and add it to the state
     const newComplaint = {
-        id: Date.now(), // Unique ID for the complaint
+        id: Date.now(),
         postTitle: selectedPost.title,
         postId: selectedPost.id,
         description: complaintDescription,
         submittedAt: new Date().toLocaleString()
     };
     setComplaints(prevComplaints => [newComplaint, ...prevComplaints]);
-
     alert(`Complaint for "${selectedPost.title}" has been submitted successfully!`);
     handleCloseModal();
   };
@@ -143,7 +181,6 @@ const SettingsPage = () => {
           <div onClick={() => setActiveTab('complaint')} className={`${tabStyle} ${activeTab === 'complaint' ? activeTabStyle : inactiveTabStyle}`}>
             Raise Complaint
           </div>
-          {/* NEW: Tab for viewing registered complaints */}
           <div onClick={() => setActiveTab('registered')} className={`${tabStyle} ${activeTab === 'registered' ? activeTabStyle : inactiveTabStyle}`}>
             Registered Complaints
           </div>
@@ -156,7 +193,6 @@ const SettingsPage = () => {
         </div>
       </div>
 
-      {/* Complaint Modal (remains the same) */}
       {isModalOpen && selectedPost && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl shadow-2xl p-8 w-full max-w-lg">
