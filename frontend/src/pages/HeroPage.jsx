@@ -135,7 +135,7 @@ function HeroPage() {
             About Us
           </h2>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet magna non purus fermentum porttitor. Sed tristique suscipit diam, vel tincidunt purus.
+Vyawastha is a next-generation citizen grievance redressal platform designed to make governance more transparent, efficient, and accountable. By allowing people to post issues with images and location, it ensures concerns directly reach the right departments. With anonymity assured, Vyawastha empowers communities to actively shape a cleaner, safer, and better society.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
             <div className="p-8 md:p-10 bg-white/50 dark:bg-black/20 backdrop-blur-md rounded-2xl shadow-lg text-left">
@@ -143,7 +143,7 @@ function HeroPage() {
                 Our Vision
               </h3>
               <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in elit vitae nunc varius euismod. Suspendisse potenti. Sed vel augue ut nisi fringilla euismod.
+We envision a citizen-driven governance system where every voice matters and every issue is resolved with efficiency. With anonymity safeguarded and technology bridging the gap between people and departments, Vyawastha strives to build transparent, responsive, and connected communities for a better tomorrow.
               </p>
             </div>
             <div className="p-8 md:p-10 bg-white/50 dark:bg-black/20 backdrop-blur-md rounded-2xl shadow-lg text-left">
@@ -151,7 +151,7 @@ function HeroPage() {
                 Our Mission
               </h3>
               <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum libero ac nunc hendrerit, eget porta odio mattis. Aenean laoreet libero eget ex volutpat posuere.
+                At Vyawastha, our mission is to empower citizens with a safe and simple way to raise their concerns. By enabling problem reporting with images and location, we ensure issues reach the right authorities for faster, transparent, and accountable action — making communities cleaner, safer, and better for everyone.
               </p>
             </div>
           </div>
