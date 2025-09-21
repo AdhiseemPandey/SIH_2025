@@ -1,6 +1,6 @@
 const { User } = require('../models/User.model');
 const Post = require('../models/Post.model');
-const ApiResponse = require('../../utils/ApiResponse');
+const ApiResponse = require('../../../utilis/ApiResponse');
 
 // Admin & Superadmin
 const verifyPost = async (req, res) => {

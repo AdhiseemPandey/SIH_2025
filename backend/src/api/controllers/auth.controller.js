@@ -1,8 +1,10 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { User } = require('../models/User.model');
-const { encrypt, decrypt } = require('../../utilis/crypto');
-const ApiResponse = require('../../utils/ApiResponse');
+const { encrypt, decrypt } = require('../../../utilis/crypto');
+const ApiResponse = require('../../../utilis/ApiResponse');
+const crypto = require('../../../utilis/crypto');
+
 
 const register = async (req, res) => {
     try {

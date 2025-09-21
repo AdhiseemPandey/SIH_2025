@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+/* Add to your global stylesheet, e.g., src/index.css */
+
+@keyframes move-diagonal {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    /* Must match the width/height of the SVG pattern */
+    background-position: -400px -400px;
+  }
+}
+
+/* Light mode background class */
+.vyawastha-light-bg {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3e%3ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Times New Roman, serif' font-size='32' fill='rgba(100, 100, 200, 0.1)' transform='rotate(-45 200 200)'%3eVyawastha%3c/text%3e%3c/svg%3e");
+  animation: move-diagonal 40s linear infinite;
+}
+
+/* Dark mode background class */
+.vyawastha-dark-bg {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3e%3ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Times New Roman, serif' font-size='32' fill='rgba(200, 200, 255, 0.07)' transform='rotate(-45 200 200)'%3eVyawastha%3c/text%3e%3c/svg%3e");
+  animation: move-diagonal 40s linear infinite;
+}

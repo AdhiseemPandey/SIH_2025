@@ -1,7 +1,7 @@
 const express = require('express');
 const { verifyPost, deleteAnyPost, manageAdmin } = require('../controllers/admin.controller');
-const { isAuthenticated } = require('../../middleware/auth.middleware');
-const { isAdmin, isSuperadmin } = require('../../middleware/role.middleware');
+const { isAuthenticated } = require('../../../middleware/auth.middleware');
+const { isAdmin, isSuperadmin } = require('../../../middleware/role.middleware');
 const router = express.Router();
 
 // All admin routes require the user to be logged in

@@ -13,7 +13,7 @@ function Header({ isLoggedIn, handleLogout }) {
     <div className="nav fixed top-0 left-0 w-full bg-white shadow-md px-6 py-4 flex justify-between items-center z-50">
       <Link to="/" className="flex items-center space-x-3 cursor-pointer">
         <img
-          src="/your-logo.png"
+          src="D:/z_sih_2025/frontend/src/assets/Gemini_Generated_Image_yox6ksyox6ksyox6.png"
           alt="Org Logo"
           className="h-10 w-10 object-contain"
         />

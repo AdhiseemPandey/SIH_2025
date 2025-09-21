@@ -1,5 +1,5 @@
 const Post = require('../models/Post.model');
-const ApiResponse = require('../../utils/ApiResponse');
+const ApiResponse = require('../../../utilis/ApiResponse');
 
 const createPost = async (req, res) => {
     try {

@@ -1,6 +1,6 @@
 const { User } = require('../models/User.model');
-const { decrypt, encrypt } = require('../../utils/crypto');
-const ApiResponse = require('../../utils/ApiResponse');
+const { decrypt, encrypt } = require('../../../utilis/crypto');
+const ApiResponse = require('../../../utilis/ApiResponse');
 const bcrypt = require('bcrypt');
 
 const getMyProfile = async (req, res) => {

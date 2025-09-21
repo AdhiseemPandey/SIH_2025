@@ -1,6 +1,6 @@
 const express = require('express');
 const { createPost, getAllPosts } = require('../controllers/post.controller');
-const { isAuthenticated } = require('../../middleware/auth.middleware');
+const { isAuthenticated } = require('../../../middleware/auth.middleware');
 const router = express.Router();
 
 // Anyone can see the posts
